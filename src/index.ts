@@ -11,9 +11,12 @@ interface ReturnValue {
 export function createResizingSVG(parentNode: HTMLElement): ReturnValue {
   parentNode.innerHTML = '';
   const oldDisplay = parentNode.style.display;
+  const oldPosition = parentNode.style.position;
   parentNode.style.display = 'grid';
+  parentNode.style.position = 'relative';
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.style.position = 'absolute';
   parentNode.appendChild(svg);
 
   const resize = (width: number, height: number) => {
@@ -34,6 +37,7 @@ export function createResizingSVG(parentNode: HTMLElement): ReturnValue {
   const cleanup = () => {
     parentNode.innerHTML = '';
     parentNode.style.display = oldDisplay;
+    parentNode.style.position = oldPosition;
     obs.disconnect();
   };
 
