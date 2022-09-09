@@ -1,6 +1,6 @@
 {
   "name": "resizing-svg",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "Create an SVG element that resizes with the parent element.",
   "main": "lib/index.js",
   "module": "lib/index.js",

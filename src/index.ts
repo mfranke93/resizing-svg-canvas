@@ -11,7 +11,7 @@ export default class ResizeContainer {
     private readonly _container: HTMLElement,
   ) {
     this._container.innerHTML = '';
-    this._container.style.display = 'grid';
+    this._container.style.display = 'block';
     this._container.style.position = 'relative';
     this._container.style.isolation = 'isolate';
 
@@ -61,7 +61,7 @@ export default class ResizeContainer {
 
   addCanvasLayer(): HTMLCanvasElement {
     const canvas = document.createElement('canvas');
-    canvas.style.gridArea = '1 / 1 / 2 / 2';
+    canvas.style.position = 'absolute';  // this is so that it does not affect the size of the wrapper element
     canvas.style.zIndex = `${this.children.length + 1}`;
 
     this._container.appendChild(canvas);
