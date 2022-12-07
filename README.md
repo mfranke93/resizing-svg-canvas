@@ -25,3 +25,48 @@ Three additional read-only fields exist on the `ResizeContainer`:
 Each time the parent element is resized, each child element is resized accordingly, and a `CustomEvent` of type `resize` is fired on each element.
 The event's `detail` field will contain an object with the new `width` and `height` values.
 An identical `CustomEvent` of type `resize` will be fired on the parent element itself.
+
+
+## Example
+
+For an empty HTML document, create a parent `<div>` element that can be resized.
+Within, add a Canvas and an SVG element.
+The canvas should fill a yellow rectangle with 20px of padding on each side.
+The SVG element should contain a Bèzier curve going from the top left to the bottom right of the yellow rectangle below.
+This should be updated each time the parent element is resized.
+
+``` javascript
+import ResizeContainer from 'resizing-svg-canvas';
+
+// create a resizable parent element
+const main = document.createElement('div');
+document.body.appendChild(main);
+
+main.style.position = 'absolute';
+main.style.outline = '1px solid rebeccapurple';
+main.style.width = '600px';
+main.style.height = '400px';
+main.style.left = '30px';
+main.style.top = '20px';
+main.style.resize = 'both';
+main.style.overflow = 'hidden';
+
+const resize = new ResizeContainer(main);
+
+const canvas = resize.addCanvasLayer();
+const svg = resize.addSvgLayer();
+
+main.addEventListener('resize', evt => {
+  // CustomEvent `detail` contains new width and height
+  const { width, height } = evt.detail;
+
+  // redraw canvas: yellow rectangle
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = '#ffdd22';
+  ctx.fillRect(20, 20, width - 40, height - 40);
+
+  // redraw svg
+  svg.innerHTML = `<path stroke="rebeccapurple" stroke-width="2" fill="none" d="M 20 20 C 100 20 ${width - 100} ${height - 20} ${width - 20} ${height - 20}" />`;
+});
+```
