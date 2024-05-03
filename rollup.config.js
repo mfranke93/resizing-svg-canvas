@@ -9,14 +9,14 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: pkg.module,
+      file: pkg.browser,
       format: 'es',
       sourcemap: false,
       plugins: [ terser(), ],
     },
     {
-      name: "ResizingSVG",
-      file: pkg.browser,
+      name: "ResizeContainer",
+      file: pkg.browserStandalone,
       format: 'iife',
       sourcemap: false,
       plugins: [ terser(), ],

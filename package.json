@@ -1,11 +1,11 @@
 {
-  "name": "resizing-svg",
-  "version": "0.1.1",
+  "name": "resizing-svg-canvas",
+  "version": "0.2.0",
   "description": "Create an SVG element that resizes with the parent element.",
-  "main": "lib/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "browser": "lib/resizing-svg.min.js",
+  "browser": "lib/index.js",
+  "browserStandalone": "lib/resizing-svg-canvas.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
@@ -18,7 +18,7 @@
     "lib/index.d.ts"
   ],
   "author": "Max Franke",
-  "repository": "https://github.com/mfranke93/resizing-svg.git",
+  "repository": "https://github.com/mfranke93/resizing-svg-canvas.git",
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",

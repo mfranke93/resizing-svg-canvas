@@ -70,3 +70,9 @@ main.addEventListener('resize', evt => {
   svg.innerHTML = `<path stroke="rebeccapurple" stroke-width="2" fill="none" d="M 20 20 C 100 20 ${width - 100} ${height - 20} ${width - 20} ${height - 20}" />`;
 });
 ```
+
+## Files
+
+The ES module build produces a file [`lib/index.js`](lib/index.js), alongside the typing information in [`lib/index.d.ts`](lib/index.d.ts).
+A standalone IIFE JavaScript file (to be used as `src` of a `<script>` tag) is built as well: [`lib/resizing-svg-canvas.min.js`](lib/resizing-svg-canvas.min.js).
+The IIFE script results in the `ResizeContainer` class being available in the global (`window`) scope.
